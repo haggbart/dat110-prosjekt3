@@ -1,18 +1,19 @@
 package no.hvl.dat110.unit.tests;
 
 
-import static org.junit.Assert.assertArrayEquals;
-
-import java.math.BigInteger;
-import java.rmi.RemoteException;
-import java.util.Set;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import no.hvl.dat110.middleware.Message;
 import no.hvl.dat110.rpc.interfaces.NodeInterface;
 import no.hvl.dat110.util.FileManager;
 import no.hvl.dat110.util.Util;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.math.BigInteger;
+import java.rmi.RemoteException;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class DHTTestRemote {
 	

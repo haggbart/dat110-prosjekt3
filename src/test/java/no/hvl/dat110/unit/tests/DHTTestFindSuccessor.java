@@ -2,17 +2,17 @@ package no.hvl.dat110.unit.tests;
 
 
 
-import static org.junit.Assert.assertEquals;
-
-import java.math.BigInteger;
-import java.rmi.RemoteException;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import no.hvl.dat110.rpc.interfaces.NodeInterface;
 import no.hvl.dat110.util.Hash;
 import no.hvl.dat110.util.Util;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.math.BigInteger;
+import java.rmi.RemoteException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DHTTestFindSuccessor {
 	

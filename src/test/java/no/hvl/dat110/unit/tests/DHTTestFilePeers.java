@@ -1,20 +1,20 @@
 package no.hvl.dat110.unit.tests;
 
 
+import no.hvl.dat110.middleware.Message;
+import no.hvl.dat110.rpc.interfaces.NodeInterface;
+import no.hvl.dat110.util.FileManager;
+import no.hvl.dat110.util.Util;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import no.hvl.dat110.middleware.Message;
-import no.hvl.dat110.rpc.interfaces.NodeInterface;
-import no.hvl.dat110.util.FileManager;
-import no.hvl.dat110.util.Util;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class DHTTestFilePeers {
 	
@@ -54,7 +54,7 @@ class DHTTestFilePeers {
 		Collections.sort(actualpeers);
 		Collections.sort(expectedpeers);
 		
-		Assert.assertArrayEquals(expectedpeers.toArray(), actualpeers.toArray());
+		assertArrayEquals(expectedpeers.toArray(), actualpeers.toArray());
 	
 	}
 
