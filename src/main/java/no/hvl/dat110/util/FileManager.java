@@ -6,6 +6,9 @@ package no.hvl.dat110.util;
  * dat110 - project 3
  */
 
+import no.hvl.dat110.middleware.Message;
+import no.hvl.dat110.rpc.interfaces.NodeInterface;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,12 +18,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
-
-import no.hvl.dat110.middleware.Message;
-import no.hvl.dat110.rpc.interfaces.NodeInterface;
-import no.hvl.dat110.util.Hash;
 
 public class FileManager {
 	
@@ -57,13 +55,15 @@ public class FileManager {
 		// implement
 		
 		// set a loop where size = numReplicas
+		for (int i = 0; i < numReplicas; i++) {
+			replicafiles[i] = Hash.hashOf(filename + i);
+		}
 		
 		// replicate by adding the index to filename
 		
 		// hash the replica
 		
 		// store the hash in the replicafiles array.
-
 	}
 	
     /**

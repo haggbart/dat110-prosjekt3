@@ -29,7 +29,7 @@ public class Hash {
 			e.printStackTrace();
 			return null;
 		}
-		
+
 		// compute the hash of the input 'entity'
 		byte[] digest = md.digest(entity.getBytes(StandardCharsets.UTF_8));
 
