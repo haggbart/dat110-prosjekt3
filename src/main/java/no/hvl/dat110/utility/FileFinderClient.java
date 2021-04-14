@@ -1,11 +1,11 @@
 package no.hvl.dat110.utility;
 
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-
 import no.hvl.dat110.rpc.interfaces.NodeInterface;
 import no.hvl.dat110.util.FileManager;
 import no.hvl.dat110.util.Util;
+
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * exercise/demo purpose in dat110
@@ -35,7 +35,4 @@ public class FileFinderClient {
 			System.out.println("=======");
 		}
 	}
-	
-	
-
 }

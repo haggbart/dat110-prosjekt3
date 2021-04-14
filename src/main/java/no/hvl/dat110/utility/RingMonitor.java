@@ -1,21 +1,14 @@
 package no.hvl.dat110.utility;
 
+import no.hvl.dat110.rpc.interfaces.NodeInterface;
+import no.hvl.dat110.util.Util;
+
 import java.io.IOException;
 import java.math.BigInteger;
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
-
-import no.hvl.dat110.rpc.interfaces.NodeInterface;
-import no.hvl.dat110.util.Util;
 
 /**
  * exercise/demo purpose in dat110

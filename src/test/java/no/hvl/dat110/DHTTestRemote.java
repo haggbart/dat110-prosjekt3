@@ -1,4 +1,4 @@
-package no.hvl.dat110.unit.tests;
+package no.hvl.dat110;
 
 
 

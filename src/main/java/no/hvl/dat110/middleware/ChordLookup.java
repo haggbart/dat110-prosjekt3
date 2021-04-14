@@ -32,12 +32,13 @@ public class ChordLookup {
 		var successor = node.getSuccessor();
 
 		// get the stub for this successor (Util.getProcessStub())
-//		var stub = Util.getProcessStub(successor.getNodeName(), successor.getPort());
+		var stub = Util.getProcessStub(successor.getNodeName(), successor.getPort());
 
 		// check that key is a member of the set {nodeid+1,...,succID} i.e. (nodeid+1 <= key <= succID) using the ComputeLogic
-		if (Util.computeLogic(key, node.getNodeID().add(BigInteger.ONE), successor.getNodeID())) {
+		assert stub != null;
+		if (Util.computeLogic(key, node.getNodeID().add(BigInteger.ONE), stub.getNodeID())) {
 			// if logic returns true, then return the successor
-			return successor;
+			return stub;
 		} else {
 			// if logic returns false; call findHighestPredecessor(key)
 			// do return highest_pred.findSuccessor(key) - This is a recursive call until logic returns true
@@ -47,7 +48,7 @@ public class ChordLookup {
 
 	/**
 	 * This method makes a remote call. Invoked from a local client
-	 * @param ID BigInteger
+	 * @param key BigInteger
 	 * @return
 	 * @throws RemoteException
 	 */
@@ -60,9 +61,10 @@ public class ChordLookup {
 		for (int i = fingertable.size() - 1; i >= 0; i--) {
 			// for each finger, obtain a stub from the registry
 			var finger = fingertable.get(i);
-//			var stub = Util.getProcessStub(finger.getNodeName(), finger.getPort());
+			var stub = Util.getProcessStub(finger.getNodeName(), finger.getPort());
 			// check that finger is a member of the set {nodeID+1,...,ID-1} i.e. (nodeID+1 <= finger <= key-1) using the ComputeLogic
-			if (Util.computeLogic(finger.getNodeID(), node.getNodeID().add(BigInteger.ONE), key.subtract(BigInteger.ONE))) {
+			assert stub != null;
+			if (Util.computeLogic(stub.getNodeID(), node.getNodeID().add(BigInteger.ONE), key.subtract(BigInteger.ONE))) {
 				// if logic returns true, then return the finger (means finger is the closest to key)
 				return finger;
 			}

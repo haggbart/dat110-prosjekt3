@@ -1,27 +1,21 @@
 /**
  * 
  */
-package no.hvl.dat110.unit.tests;
+package no.hvl.dat110;
 
-import static org.junit.jupiter.api.Assertions.*;
+import no.hvl.dat110.rpc.interfaces.NodeInterface;
+import no.hvl.dat110.util.Util;
+import no.hvl.dat110.utility.FileDistributorClient;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigInteger;
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import no.hvl.dat110.rpc.interfaces.NodeInterface;
-import no.hvl.dat110.util.Util;
-import no.hvl.dat110.utility.FileDistributorClient;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * @author tdoy

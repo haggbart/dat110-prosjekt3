@@ -1,4 +1,4 @@
-package no.hvl.dat110.unit.tests;
+package no.hvl.dat110;
 
 
 import no.hvl.dat110.middleware.Message;
@@ -34,7 +34,7 @@ class DHTTestFilePeers {
 		String filename = "file2";
 		
 		Set<Message> activepeers = fm.requestActiveNodesForFile(filename);  // 2, 3 ,4 are holding file2
-		
+
 		// retrieve the actual file names from the peers
 		List<String> actualpeers = new ArrayList<>();
 		activepeers.forEach(peer -> {
