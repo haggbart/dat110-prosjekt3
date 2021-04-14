@@ -18,6 +18,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 public class FileManager {
@@ -32,6 +33,8 @@ public class FileManager {
 	private String sizeOfByte;
 	
 	private Set<Message> activeNodesforFile = null;
+
+	private static final Random random = new Random();
 	
 	public FileManager(NodeInterface chordnode) throws RemoteException {
 		this.chordnode = chordnode;
@@ -65,32 +68,33 @@ public class FileManager {
 		
 		// store the hash in the replicafiles array.
 	}
-	
-    /**
-     * 
-     * @param bytesOfFile
-     * @throws RemoteException 
-     */
+
     public int distributeReplicastoPeers() throws RemoteException {
     	int counter = 0;
     	
     	// Task1: Given a filename, make replicas and distribute them to all active peers such that: pred < replica <= peer
-    	
+
     	// Task2: assign a replica as the primary for this file. Hint, see the slide (project 3) on Canvas
+		int primary = random.nextInt(numReplicas - 1);
     	
     	// create replicas of the filename
-    	
+		createReplicaFiles();
+		
 		// iterate over the replicas
-    	
-    	// for each replica, find its successor by performing findSuccessor(replica)
-    	
-    	// call the addKey on the successor and add the replica
-    	
-    	// call the saveFileContent() on the successor
-    	
-    	// increment counter
-    	
-    		
+		for (var replica : replicafiles) {
+			// for each replica, find its successor by performing findSuccessor(replica)
+			var successor = chordnode.findSuccessor(replica);
+
+			// call the addKey on the successor and add the replica
+			successor.addKey(replica);
+
+			// call the saveFileContent() on the successor
+			successor.saveFileContent(filename, successor.getNodeID(), bytesOfFile, counter == primary);
+
+			// increment counter
+			counter++;
+		}
+
 		return counter;
     }
 	
@@ -233,7 +237,7 @@ public class FileManager {
 		return sizeOfByte;
 	}
 	/**
-	 * @param size the size to set
+	 * @param sizeOfByte the size to set
 	 */
 	public void setSizeOfByte(String sizeOfByte) {
 		this.sizeOfByte = sizeOfByte;
