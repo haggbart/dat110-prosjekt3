@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package no.hvl.dat110.main;
 
@@ -8,14 +8,14 @@ package no.hvl.dat110.main;
  *
  */
 public enum FileNames {
-	
-	file1,
-	file2,
-	file3,
-	file4,
-	file5,
-	file6,
-	file7,
-	file8
+
+    file1,
+    file2,
+    file3,
+    file4,
+    file5,
+    file6,
+    file7,
+    file8
 
 }

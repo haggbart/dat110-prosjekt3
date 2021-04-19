@@ -17,45 +17,45 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class DHTTestFilePeers {
-	
-	@BeforeEach
-	void setUp() throws Exception {
-		
 
-	}
+    @BeforeEach
+    void setUp() throws Exception {
 
-	@Test
-	void test() throws InterruptedException, RemoteException {
-		
-		// retrieve the process stubs to be contacted for finding replicas of file2
-		NodeInterface p3 = Util.getProcessStub("process3", 9093);
-		
-		FileManager fm = new FileManager(p3, Util.numReplicas);
-		String filename = "file2";
-		
-		Set<Message> activepeers = fm.requestActiveNodesForFile(filename);  // 2, 3 ,4 are holding file2
 
-		// retrieve the actual file names from the peers
-		List<String> actualpeers = new ArrayList<>();
-		activepeers.forEach(peer -> {
-			actualpeers.add(peer.getNodeIP());
-			
-		});
-		
-		List<String> expectedpeers = new ArrayList<>();
-		expectedpeers.add("process2");
-		expectedpeers.add("process3");
-		expectedpeers.add("process4");
-		expectedpeers.add("process4");
-		
-		
-		// sort both lists
-		
-		Collections.sort(actualpeers);
-		Collections.sort(expectedpeers);
-		
-		assertArrayEquals(expectedpeers.toArray(), actualpeers.toArray());
-	
-	}
+    }
+
+    @Test
+    void test() throws InterruptedException, RemoteException {
+
+        // retrieve the process stubs to be contacted for finding replicas of file2
+        NodeInterface p3 = Util.getProcessStub("process3", 9093);
+
+        FileManager fm = new FileManager(p3, Util.numReplicas);
+        String filename = "file2";
+
+        Set<Message> activepeers = fm.requestActiveNodesForFile(filename);  // 2, 3 ,4 are holding file2
+
+        // retrieve the actual file names from the peers
+        List<String> actualpeers = new ArrayList<>();
+        activepeers.forEach(peer -> {
+            actualpeers.add(peer.getNodeIP());
+
+        });
+
+        List<String> expectedpeers = new ArrayList<>();
+        expectedpeers.add("process2");
+        expectedpeers.add("process3");
+        expectedpeers.add("process4");
+        expectedpeers.add("process4");
+
+
+        // sort both lists
+
+        Collections.sort(actualpeers);
+        Collections.sort(expectedpeers);
+
+        assertArrayEquals(expectedpeers.toArray(), actualpeers.toArray());
+
+    }
 
 }
